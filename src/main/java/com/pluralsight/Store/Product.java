@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.Store;
 
 import java.time.LocalDate;
 

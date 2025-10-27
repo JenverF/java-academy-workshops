@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.Library;
 
 public class Book {
     private int id;
