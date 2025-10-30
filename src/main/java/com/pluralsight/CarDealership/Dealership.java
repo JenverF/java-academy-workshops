@@ -93,9 +93,11 @@ public class Dealership {
 
     public void addVehicle(Vehicle vehicle) {
         inventory.add(vehicle);
+        DealershipFileManager.saveDealership(this, "files/dealership.csv");
     }
 
     public void removeVehicle(Vehicle vehicle) {
         inventory.remove(vehicle);
+        DealershipFileManager.saveDealership(this, "files/dealership.csv");
     }
 }

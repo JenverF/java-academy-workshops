@@ -1,17 +1,22 @@
 package com.pluralsight.CarDealership;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
     private Dealership dealership;
 
-    public UserInterface(Dealership dealership) {
-        this.dealership = dealership;
+    public UserInterface() {
+    }
+
+    private void init() {
+        dealership = DealershipFileManager.getDealership("files/inventory.csv");
     }
 
     public void display() {
+        init();
         while(true) {
             System.out.println("""
                     Welcome! Please choose an option:
@@ -122,11 +127,11 @@ public class UserInterface {
     }
 
     private void processListAll() {
-        ArrayList<Vehicle> all = dealership.getAllVehicles();
-        displayVehicles(all);
+        List<Vehicle> vehicles = dealership.getAllVehicles();
+        displayVehicles(vehicles);
     }
 
-    private void displayVehicles(ArrayList<Vehicle> vehicles) {
+    private void displayVehicles(List<Vehicle> vehicles) {
         if (vehicles.isEmpty()) {
             System.out.println("No vehicles found.");
         } else {
@@ -175,7 +180,7 @@ public class UserInterface {
 
         if (vehicleToRemove != null) {
             dealership.removeVehicle(vehicleToRemove);
-            new DealershipFileManager().saveDealership(dealership);
+            DealershipFileManager.saveDealership(dealership, "files/inventory.csv");
             System.out.println("Vehicle removed successfully!");
         } else {
             System.out.println("Vehicle not found!");
