@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.Calculators;
 
 public class FinancialCalculators {
     static void main() {
