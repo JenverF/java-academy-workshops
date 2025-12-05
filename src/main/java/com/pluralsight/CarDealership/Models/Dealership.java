@@ -1,4 +1,4 @@
-package com.pluralsight.CarDealership;
+package com.pluralsight.CarDealership.Models;
 
 import java.util.ArrayList;
 
@@ -19,12 +19,32 @@ public class Dealership {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getAddress() {
         return address;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getPhone() {
         return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public ArrayList<Vehicle> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(ArrayList<Vehicle> inventory) {
+        this.inventory = inventory;
     }
 
     public ArrayList<Vehicle> getVehiclesByPrice(double min, double max) {
@@ -71,33 +91,4 @@ public class Dealership {
         return matches;
     }
 
-    public ArrayList<Vehicle> getVehiclesByMileage(int min, int max) {
-        ArrayList<Vehicle> matches = new ArrayList<>();
-        for(Vehicle v : inventory) {
-            if(v.getOdometer() >= min && v.getOdometer() <= max) {
-                matches.add(v);
-            }
-        }
-        return matches;
-    }
-
-    public ArrayList<Vehicle> getVehiclesByType(String vehicleType) {
-        ArrayList<Vehicle> matches = new ArrayList<>();
-        for(Vehicle v : inventory) {
-            if(v.getVehicleType().equalsIgnoreCase(vehicleType)) {
-                matches.add(v);
-            }
-        }
-        return matches;
-    }
-
-    public void addVehicle(Vehicle vehicle) {
-        inventory.add(vehicle);
-        DealershipFileManager.saveDealership(this, "files/dealership.csv");
-    }
-
-    public void removeVehicle(Vehicle vehicle) {
-        inventory.remove(vehicle);
-        DealershipFileManager.saveDealership(this, "files/dealership.csv");
-    }
 }
