@@ -1,8 +1,10 @@
 package com.pluralsight.CarDealership.User;
 
-import static com.pluralsight.CarDealership.User.UserInterface.scanner;
+import java.util.Scanner;
 
 public class VehicleInput {
+    static Scanner scanner = new Scanner(System.in);
+
     public static double searchbyPrice(){
         String input = ("What is the minimum price you'd like to search for?");
         System.out.println(input);
